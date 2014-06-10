@@ -15,7 +15,7 @@
 \RequirePackage{amsmath,amsthm,amssymb}
 \RequirePackage{mathtext}
 % Fonts and lang
-\RequirePackage[T1,T2A]{fontenc}
+\RequirePackage[T1,TS1,T2A]{fontenc}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[english,russian]{babel}
 % Formatting
@@ -23,11 +23,12 @@
 \RequirePackage{setspace}
 \RequirePackage{indentfirst}
 % Graphics
-\RequirePackage{graphicx,wrapfig,subfig}
+\RequirePackage{graphicx}
+\RequirePackage{subcaption}
 % Tables
 \RequirePackage{tabularx,multirow}
 % Misc useful packages
-\RequiredPackage[binary-units]{siunitx}
+\RequirePackage[binary-units]{siunitx}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%% Set up correct formatting %%%%%
