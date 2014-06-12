@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{mipt-thesis}[2014/06/05 Class for the BS thesis in the MIPT]
+\ProvidesClass{mipt-thesis}[2014/06/12 Class for the BS thesis in the MIPT]
 
 %%%%%% Class options %%%%%
 \DeclareOption*{
@@ -7,7 +7,7 @@
 }
 \ProcessOptions\relax
 
-\LoadClass[a4paper,12pt]{article}
+\LoadClass[a4paper,12pt]{book}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%% Useful packages %%%%%
@@ -22,6 +22,9 @@
 \RequirePackage{geometry}
 \RequirePackage{setspace}
 \RequirePackage{indentfirst}
+\RequirePackage{fancyhdr}
+\RequirePackage{nopageno}
+\RequirePackage{tocloft}
 % Graphics
 \RequirePackage{graphicx}
 \RequirePackage{subcaption}
@@ -39,6 +42,128 @@
 \onehalfspace
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%% Some dark TeX magic %%%%%
+\renewcommand\contentsname{Оглавление}
+\renewcommand\listfigurename{Список иллюстраций}
+\renewcommand\listtablename{Список таблиц}
+\renewcommand\bibname{Литература}
+\renewcommand\indexname{Index}
+\renewcommand\figurename{Рис.{}}
+\renewcommand\tablename{Таблица}
+\renewcommand\partname{Часть}
+\renewcommand\chaptername{Глава}
+\renewcommand\appendixname{Приложение}
+
+
+\def\@part[#1]#2{%
+    \ifnum \c@secnumdepth >-2\relax
+      \refstepcounter{part}%
+      \addcontentsline{toc}{part}{\thepart\hspace{1em}#1}%
+    \else
+      \addcontentsline{toc}{part}{#1}%
+    \fi
+    \partmark{#1}%
+    {\centering
+     \interlinepenalty \@M
+     \normalfont
+     \ifnum \c@secnumdepth >-2\relax
+       \huge\bfseries\boldmath \partname~\thepart
+       \par
+       \vskip 20\p@
+     \fi
+     \Huge \bfseries\boldmath #2\par}%
+    \@endpart}
+\def\@spart#1{%
+    {\centering
+     \interlinepenalty \@M
+     \normalfont
+     \Huge \bfseries\boldmath #1\par}%
+    \@endpart}
+
+\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+                       \if@mainmatter
+                         \refstepcounter{chapter}%
+                         \typeout{\@chapapp\space\thechapter.}%
+                         \addcontentsline{toc}{chapter}%
+                                   {\protect\numberline{\thechapter}#2}%
+                       \else
+                         \addcontentsline{toc}{chapter}{#2}%
+                       \fi
+                    \else
+                      \addcontentsline{toc}{chapter}{#2}%
+                    \fi
+                    \chaptermark{#1}%
+                    \addtocontents{lof}{\protect\addvspace{10\p@}}%
+                    \addtocontents{lot}{\protect\addvspace{10\p@}}%
+                    \if@twocolumn
+                      \@topnewpage[\@makechapterhead{#2}]%
+                    \else
+                      \@makechapterhead{#2}%
+                      \@afterheading
+                    \fi}
+
+
+\def\@makechapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+      \if@mainmatter
+        \huge\bfseries\boldmath \@chapapp\space \thechapter
+        \par\nobreak
+        \vskip 20\p@
+      \fi
+    \fi
+    \interlinepenalty\@M
+    \Huge \bfseries\boldmath #1\par\nobreak
+    \vskip 40\p@
+  }}
+\def\@makeschapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright
+    \normalfont
+    \interlinepenalty\@M
+    \Huge \bfseries\boldmath  #1\par\nobreak
+    \vskip 40\p@
+  }}
+
+
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
+                                   {2.3ex \@plus.2ex}%
+                             {\normalfont\Large\raggedright}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                             {\normalfont\Large\sffamily\itshape\raggedright}}
+%%%%%%%% Captions %%%%%%%%%%%%%%%%%%%%%%%%%%
+\long\def\@makecaption#1#2{%
+  \vskip\abovecaptionskip
+  \sbox\@tempboxa{#1. #2}%
+  \ifdim \wd\@tempboxa >\hsize
+    #1. #2\par
+  \else
+    \global \@minipagefalse
+    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+  \fi
+  \vskip\belowcaptionskip}
+
+%%%%%%%% Headings
+\lhead[\fancyplain{}\thepage]{\fancyplain{}\rightmark}
+\rhead[\fancyplain{}\leftmark]{\fancyplain{}\thepage}
+\cfoot{}\lfoot{}\rfoot{}
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\hfill\normalfont #1\hfill}{}}
+\renewcommand{\sectionmark}[1]{\markright{\hfill\large\itshape \S\thesection\quad #1\hfill}}
+\let\partmark=\chaptermark
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%% Right TOC numbering %%%%%
+\renewcommand{\cftchapaftersnum}{.}
+\renewcommand{\cftsecaftersnum}{.}
+\renewcommand{\cftsubsecaftersnum}{.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %%%%% Titlepage and contents %%%%%
 % Set some "variables"
 \renewcommand{\author}[1]{\def\mtauthortext{#1}}
@@ -46,7 +171,11 @@
 \newcommand{\groupnum}[1]{\def\mtgroupnumtext{#1}}
 \newcommand{\supervisor}[1]{\def\mtsupervisortext{#1}}
 
-\renewcommand{\titlepage}{
+\newcommand{\addemptypage}{%
+    \clearpage \mbox{} \clearpage
+}
+
+\renewcommand{\titlepage}{%
     \pagestyle{empty}
     \begin{center}
         {\bf Министерство образования и науки Российской Федерации \\
@@ -84,18 +213,16 @@
     \vspace{7em}
 
     \begin{center}
-        Долгопрудный \the\year{}
+        Долгопрудный \\
+        \the\year{}
     \end{center}
 
-    \newpage
 }
 
 \newcommand{\titlecontents}{
-    \titlepage
-    \tableofcontents
-    \newpage
-    \pagestyle{plain}
-    \setcounter{page}{1}
+    \titlepage \addemptypage
+    \tableofcontents \addemptypage
+    \pagestyle{fancy}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
