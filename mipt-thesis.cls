@@ -164,6 +164,11 @@
 \renewcommand{\cftsubsecaftersnum}{.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%% Easier references %%%%%
+\newcommand{\formref}[1]{(\ref{#1})}
+\newcommand{\picref}[1]{рис.~\ref{#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %%%%% Titlepage and contents %%%%%
 % Set some "variables"
 \renewcommand{\author}[1]{\def\mtauthortext{#1}}
