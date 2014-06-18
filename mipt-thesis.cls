@@ -25,13 +25,8 @@
 \RequirePackage{fancyhdr}
 \RequirePackage{nopageno}
 \RequirePackage{tocloft}
-% Graphics
-\RequirePackage{graphicx}
-\RequirePackage{subcaption}
-% Tables
-\RequirePackage{tabularx,multirow}
-% Misc useful packages
-\RequirePackage[binary-units]{siunitx}
+% Style file with additional packages
+\RequirePackage{mipt-thesis}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%% Set up correct formatting %%%%%
