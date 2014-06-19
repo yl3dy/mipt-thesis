@@ -225,7 +225,7 @@
 \newcommand{\titlecontents}{
     \titlepage \addemptypage
     \tableofcontents \addemptypage
-    \pagestyle{fancy}
+    \pagestyle{miptthesis}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
