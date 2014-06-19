@@ -1,0 +1,16 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mipt-thesis-biblatex}[2014/06/19 Some settings for Biblatex]
+
+\RequirePackage[backend=biber,autolang=other,bibstyle=mipt-thesis]{biblatex}
+\renewcommand{\finalnamedelim}{, }
+\defbibheading{bibliography}[\refname]{%
+    \chapter*{#1}%
+    \markboth{#1}{#1}%
+}
+
+% Shorthand for printing bibliography and adding it to TOC
+\newcommand{\printbib}{%
+    \addcontentsline{toc}{chapter}{\bibname}%
+    \printbibliography%
+}
+

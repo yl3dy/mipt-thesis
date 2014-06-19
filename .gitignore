@@ -2,5 +2,6 @@
 !.gitignore
 !mipt-thesis.cls
 !mipt-thesis.sty
+!mipt-thesis-biblatex.sty
 !mipt-thesis.bbx
 !README
