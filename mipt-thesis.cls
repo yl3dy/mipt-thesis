@@ -143,10 +143,13 @@
   \vskip\belowcaptionskip}
 
 %%%%%%%% Headings
-\lhead[\fancyplain{}\thepage]{\fancyplain{}\rightmark}
-\rhead[\fancyplain{}\leftmark]{\fancyplain{}\thepage}
-\cfoot{}\lfoot{}\rfoot{}
-\pagestyle{fancy}
+\fancypagestyle{miptthesis}{%
+    \fancyhf{}
+    \fancyhead[RO, LE]{\thepage}
+    \fancyhead[CO]{\leftmark}
+    \fancyhead[CE]{\rightmark}
+}
+\pagestyle{miptthesis}
 \renewcommand{\chaptermark}[1]{\markboth{\hfill\normalfont #1\hfill}{}}
 \renewcommand{\sectionmark}[1]{\markright{\hfill\large\itshape \S\thesection\quad #1\hfill}}
 \let\partmark=\chaptermark
