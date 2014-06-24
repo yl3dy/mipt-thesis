@@ -5,6 +5,29 @@
 
 % Difference from numeric - "in:" is removed everywhere
 
+\renewbibmacro*{journal+issuetitle}{
+  \usebibmacro{journal}%
+  \setunit*{\addspace}%
+  \iffieldundef{series}
+    {}
+    {\newunit
+     \printfield{series}%
+     \setunit{\addspace}}%
+  \usebibmacro{volume+number+eid}%
+  \setunit{\addspace}%
+  \usebibmacro{issue+date}%
+  \setunit{\addcolon\space}%
+  \usebibmacro{issue}%
+  \newunit
+}
+\newbibmacro*{volume+number+eid}{%
+  {\bf \printfield{volume}}%
+  \setunit{\addspace}%
+  \printfield{number}%
+  \setunit{\space}%
+  \printfield{eid}
+}
+
 \DeclareBibliographyDriver{article}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
