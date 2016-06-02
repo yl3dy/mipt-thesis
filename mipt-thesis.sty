@@ -1,15 +1,24 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{mipt-thesis}[2014/06/18 Supplementary packages of BS thesis class]
 
-% Graphics
-\RequirePackage{graphicx}
-\RequirePackage{subcaption}
 % Tables
 \RequirePackage{tabularx,multirow}
 % Nice unit formatting
 \RequirePackage[binary-units]{siunitx}
 % Additional integral symbols
 \RequirePackage{esint}
+
+% Graphics
+\RequirePackage{graphicx}
+\RequirePackage{subcaption}
+\DeclareCaptionSubType[arabic]{figure}
+\renewcommand\thesubfigure{\asbuk{subfigure}}
+
+% Set continuous numbering
+\RequirePackage{chngcntr}
+\counterwithout{figure}{chapter}
+\counterwithout{equation}{chapter}
+\counterwithout{table}{chapter}
 
 
 \endinput
