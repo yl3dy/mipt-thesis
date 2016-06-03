@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{mipt-thesis-biblatex}[2014/06/19 Some settings for Biblatex]
 
-\RequirePackage[backend=biber,autolang=other,bibstyle=mipt-thesis]{biblatex}
+\RequirePackage[backend=biber,autolang=other,bibstyle=mipt-thesis,citestyle=numeric-comp]{biblatex}
 \renewcommand{\finalnamedelim}{, }
 \defbibheading{bibliography}[\refname]{%
     \chapter*{#1}%
@@ -13,4 +13,3 @@
     \addcontentsline{toc}{chapter}{\bibname}%
     \printbibliography%
 }
-
