@@ -1,8 +1,9 @@
 *
+!LICENSE
 !.gitignore
 !mipt-thesis-ms.cls
 !mipt-thesis-bs.cls
 !mipt-thesis.sty
 !mipt-thesis-biblatex.sty
 !mipt-thesis.bbx
-!README
+!README.md
