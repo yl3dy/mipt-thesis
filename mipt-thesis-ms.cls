@@ -38,16 +38,27 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%% Some dark TeX magic %%%%%
-\renewcommand\contentsname{Оглавление}
-\renewcommand\listfigurename{Список иллюстраций}
-\renewcommand\listtablename{Список таблиц}
-\renewcommand\bibname{Литература}
-\renewcommand\indexname{Index}
-\renewcommand\figurename{Рис.{}}
-\renewcommand\tablename{Таблица}
-\renewcommand\partname{Часть}
-\renewcommand\chaptername{Глава}
-\renewcommand\appendixname{Приложение}
+\addto\captionsrussian{\renewcommand{\contentsname}{Содержание}}
+\addto\captionsrussian{\renewcommand{\listfigurename}{Список иллюстраций}}
+\addto\captionsrussian{\renewcommand{\listtablename}{Список таблиц}}
+\addto\captionsrussian{\renewcommand{\bibname}{Литература}}
+\addto\captionsrussian{\renewcommand{\indexname}{Index}}
+\addto\captionsrussian{\renewcommand{\figurename}{Рис.{}}}
+\addto\captionsrussian{\renewcommand{\tablename}{Таблица}}
+\addto\captionsrussian{\renewcommand{\partname}{Часть}}
+\addto\captionsrussian{\renewcommand{\chaptername}{Глава}}
+\addto\captionsrussian{\renewcommand{\appendixname}{Приложение}}
+%%% Has no effect since babel package switches tags (see https://tex.stackexchange.com/questions/153182/strange-behaviour-on-redefining-contentsname, /usr/share/texlive/texmf-dist/tex/generic/babel-russian/russianb.ldf (Debian))%%%
+%\renewcommand\contentsname{Содержание}
+%\renewcommand\listfigurename{Список иллюстраций}
+%\renewcommand\listtablename{Список таблиц}
+%\renewcommand\bibname{Литература}
+%\renewcommand\indexname{Index}
+%\renewcommand\figurename{Рис.{}}
+%\renewcommand\tablename{Таблица}
+%\renewcommand\partname{Часть}
+%\renewcommand\chaptername{Глава}
+%\renewcommand\appendixname{Приложение}
 
 
 \def\@part[#1]#2{%
