@@ -184,6 +184,8 @@
 \renewcommand{\title}[1]{\def\mttitletext{#1}}
 \newcommand{\groupnum}[1]{\def\mtgroupnumtext{#1}}
 \newcommand{\supervisor}[1]{\def\mtsupervisortext{#1}}
+\newcommand{\faculty}[1]{\def\mtfacultytext{#1}}
+\newcommand{\department}[1]{\def\mtdepartmenttext{#1}}
 
 \newcommand{\addemptypage}{%
     \clearpage \mbox{} \clearpage
@@ -197,8 +199,9 @@
         университет) \\ }
         \vspace{1cm}
 
-        Факультет проблем физики и энергетики \\
-        Кафедра космической физики \\
+
+        \mtfacultytext \\
+        \mtdepartmenttext \\
 
         \vspace{3em}
 
